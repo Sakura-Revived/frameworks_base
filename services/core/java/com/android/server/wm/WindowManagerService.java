@@ -5951,6 +5951,11 @@ public class WindowManagerService extends IWindowManager.Stub
     }
 
     @Override
+    public void takeCustomScreenshot(boolean partial) {
+        mPolicy.takeCustomScreenshot(partial);
+    }
+
+    @Override
     public void lockNow(Bundle options) {
         mPolicy.lockNow(options);
     }
