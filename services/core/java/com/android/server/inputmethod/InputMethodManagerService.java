@@ -223,6 +223,9 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
     private static final int NOT_A_SUBTYPE_ID = InputMethodUtils.NOT_A_SUBTYPE_ID;
     private static final String TAG_TRY_SUPPRESSING_IME_SWITCHER = "TrySuppressingImeSwitcher";
 
+    // Long screenshot
+    private static final long LONGSHOT_BLOCK_SHOWING_TIMEOUT = 2000;
+
     /**
      * Binding flags for establishing connection to the {@link InputMethodService}.
      */
