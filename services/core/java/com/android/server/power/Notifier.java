@@ -892,6 +892,11 @@ public class Notifier {
         mSuspendBlocker.release();
     }
 
+    private void showWiredChargingDisconnected(@UserIdInt int userId) {
+        playChargingStartedFeedback(userId, false /* wireless */);
+        mSuspendBlocker.release();
+    }
+
     private void lockProfile(@UserIdInt int userId) {
         mTrustManager.setDeviceLockedForUser(userId, true /*locked*/);
     }
@@ -930,11 +935,11 @@ public class Notifier {
                 case MSG_PROFILE_TIMED_OUT:
                     lockProfile(msg.arg1);
                     break;
-                case MSG_WIRED_CHARGING_DISCONNECTED:
-                    showChargingStopped(msg.arg1, msg.arg2 /* wireless */);
-                    break;
                 case MSG_WIRED_CHARGING_STARTED:
                     showWiredChargingStarted(msg.arg1, msg.arg2);
+                    break;
+                case MSG_WIRED_CHARGING_DISCONNECTED:
+                    showWiredChargingDisconnected(msg.arg1);
                     break;
             }
         }
