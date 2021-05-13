@@ -1021,6 +1021,7 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
             brightnessAdjustmentFlags = BrightnessReason.ADJUSTMENT_AUTO;
             mAppliedTemporaryAutoBrightnessAdjustment = false;
         }
+
         // Apply brightness boost.
         // We do this here after deciding whether auto-brightness is enabled so that we don't
         // disable the light sensor during this temporary state.  That way when boost ends we will
