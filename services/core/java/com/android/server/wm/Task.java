@@ -313,6 +313,9 @@ class Task extends WindowContainer<WindowContainer> {
     String mCallingPackage;
     String mCallingFeatureId;
 
+    // Package name
+    String mPackageName;
+
     private final Rect mTmpStableBounds = new Rect();
     private final Rect mTmpNonDecorBounds = new Rect();
     private final Rect mTmpBounds = new Rect();
@@ -962,12 +965,19 @@ class Task extends WindowContainer<WindowContainer> {
             mCallingFeatureId = r.launchedFromFeatureId;
             setIntent(intent != null ? intent : r.intent, info != null ? info : r.info);
         }
+        if(info != null){
+            mPackageName = info.packageName;
+        }
         setLockTaskAuth(r);
     }
 
     /** Sets the original intent, _without_ updating the calling uid or package. */
     private void setIntent(Intent _intent, ActivityInfo info) {
+        if(info != null){
+            mPackageName = info.packageName;
+        }
         if (!isLeafTask()) return;
+        final boolean isLeaf = isLeafTask();
         if (intent == null) {
             mNeverRelinquishIdentity = (info.flags & FLAG_RELINQUISH_TASK_IDENTITY) == 0;
         } else if (mNeverRelinquishIdentity) {
