@@ -325,7 +325,6 @@ class AutomaticBrightnessController {
         boolean dozing = (displayPolicy == DisplayPowerRequest.POLICY_DOZE);
         boolean changed = setBrightnessConfiguration(configuration);
         changed |= setDisplayPolicy(displayPolicy);
-
         if (userChangedAutoBrightnessAdjustment) {
             changed |= setAutoBrightnessAdjustment(adjustment);
         }
